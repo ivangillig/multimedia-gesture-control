@@ -1,0 +1,19 @@
+# Control Multimedia con Reconocimiento de Manos - Dependencias
+
+# Visión computacional y procesamiento de imágenes
+opencv-python>=4.8.0
+
+# Reconocimiento de manos y rostro con Machine Learning
+mediapipe>=0.10.0
+
+# Control de audio específico para Windows
+pycaw>=20220416
+
+# Interacción con APIs de Windows
+comtypes>=1.1.14
+
+# Cálculos matemáticos y arrays
+numpy>=1.21.0
+
+# Opcional: Para mejor performance en algunos sistemas
+# opencv-contrib-python>=4.8.0
