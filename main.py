@@ -50,7 +50,28 @@ class HandController:
         self.required_stable_frames = GestureConfig.STABLE_FRAMES_REQUIRED
         
         # Inicializar webcam
-        self.cap = cv2.VideoCapture(0)
+        print(f"🎥 Inicializando cámara {GestureConfig.CAMERA_INDEX}...")
+        self.cap = cv2.VideoCapture(GestureConfig.CAMERA_INDEX)
+        
+        # Configurar resolución de la cámara
+        if self.cap.isOpened():
+            self.cap.set(cv2.CAP_PROP_FRAME_WIDTH, GestureConfig.CAMERA_WIDTH)
+            self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, GestureConfig.CAMERA_HEIGHT)
+            
+            # Verificar resolución actual
+            actual_width = int(self.cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+            actual_height = int(self.cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+            print(f"📐 Resolución configurada: {actual_width}x{actual_height}")
+        else:
+            raise Exception("No se pudo inicializar la cámara")
+            
+        # Configurar ventana
+        cv2.namedWindow('Control Multimedia con Manos', cv2.WINDOW_NORMAL)
+        if GestureConfig.WINDOW_SCALE != 1.0:
+            window_width = int(GestureConfig.CAMERA_WIDTH * GestureConfig.WINDOW_SCALE)
+            window_height = int(GestureConfig.CAMERA_HEIGHT * GestureConfig.WINDOW_SCALE)
+            cv2.resizeWindow('Control Multimedia con Manos', window_width, window_height)
+            print(f"🖼️ Ventana redimensionada: {window_width}x{window_height}")
 
     def detect_gestures(self, hand_results, face_results):
         """Detectar gestos en ambas manos y rostro"""

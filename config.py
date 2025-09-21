@@ -21,6 +21,14 @@ class GestureConfig:
     MEDIAPIPE_CONFIDENCE = 0.8  # Aumentado para mejor detección
     MAX_HANDS = 2
     
+    # Configuración de cámara
+    CAMERA_INDEX = 1  # 0=cámara integrada, 1=cámara USB externa, 2=segunda externa, etc.
+    
+    # Configuración de resolución y ventana
+    CAMERA_WIDTH = 1280   # Ancho de la cámara (640, 1280, 1920)
+    CAMERA_HEIGHT = 720   # Alto de la cámara (480, 720, 1080)
+    WINDOW_SCALE = 1.0    # Factor de escala de la ventana (1.0 = tamaño original, 1.5 = 150%)
+    
     # Modo de control multimedia preferido
     MEDIA_GESTURE_MODE = "fist_head_tilt"  # "gun", "peace", o "fist_head_tilt"
     
